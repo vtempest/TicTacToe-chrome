@@ -1,0 +1,17 @@
+{
+	"name": "Impossible Tic Tac Toe",
+	"description": "Tic Tac Toe game that is impossible to win",
+	"version": "1.2",
+	
+	"app": {
+		"background": {
+		  "scripts": ["background.js"]
+		}
+	  },
+	  
+	"icons": {
+		"16": "x.png",
+        "128": "logo.png"
+	},
+	"manifest_version": 2
+}
