@@ -1,6 +1,4 @@
-
-
-//9 array for all variables
+//9-variable array for all squares
 var g;
 //winning positions
 var pos = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[6,4,2]];
@@ -65,16 +63,16 @@ function response(){
         p = pos[w];
         var countX =0;
         var countO =0;
-        var blankO = -1;
+        var blank = -1;
         for (var c = 0; c < 3; c++){
             if (g[p[c]] == 1) countX++;
             if (g[p[c]] == 2) countO++;
-            if (g[p[c]] == 0) blankO = c;
+            if (g[p[c]] == 0) blank = c;
         }
 
         //1 ensure win when pc has 2 in a row and blank
-        if (countO==2 && blankO > -1){
-            claim(p[blankO]);
+        if (countO==2 && blank > -1){
+            claim(p[blank]);
             return;
         }
 
@@ -84,16 +82,16 @@ function response(){
         p = pos[w];
         var countX =0;
         var countO =0;
-        var blankO = -1;
+        var blank = -1;
         for (var c = 0; c < 3; c++){
             if (g[p[c]] == 1) countX++;
             if (g[p[c]] == 2) countO++;
-            if (g[p[c]] == 0) blankO = c;
+            if (g[p[c]] == 0) blank = c;
         }
 
         //2 avert sure loss when user has 2 in a row and blank
-         if (countX==2 && blankO > -1){
-             claim(p[blankO]);
+         if (countX==2 && blank > -1){
+             claim(p[blank]);
             return;
         }
 
@@ -125,30 +123,30 @@ function response(){
         p = pos[w];
         var countX =0;
         var countO =0;
-        var blankO = -1;
+        var blank = -1;
         for (var c = 0; c < 3; c++){
             if (g[p[c]] == 1) countX++;
             if (g[p[c]] == 2) countO++;
-            if (g[p[c]] == 0) blankO = c;
+            if (g[p[c]] == 0) blank = c;
         }
 
         //4 avert user 2 in row when 1 in row and 2 blank by placing O in a corner
-		if (countX==1 && countO==0 && blankO > -1){
+		if (countX==1 && countO==0 && blank > -1){
             
 			
-			if (p[blankO]==0 && g[0] == 0){
+			if (p[blank]==0 && g[0] == 0){
 				claim(0);
 				return;
 			}
-			if (p[blankO]==2 && g[2] == 0){
+			if (p[blank]==2 && g[2] == 0){
 				claim(2);
 				return;
 			}
-			if (p[blankO]==6 && g[6] == 0){
+			if (p[blank]==6 && g[6] == 0){
 				claim(6);
 				return;
 			}
-			if (p[blankO]==8 && g[8] == 0){
+			if (p[blank]==8 && g[8] == 0){
 				claim(8);
 				return;
 			}
@@ -164,17 +162,17 @@ function response(){
         p = pos[w];
         var countX =0;
         var countO =0;
-        var blankO = -1;
+        var blank = -1;
         for (var c = 0; c < 3; c++){
             if (g[p[c]] == 1) countX++;
             if (g[p[c]] == 2) countO++;
-            if (g[p[c]] == 0) blankO = c;
+            if (g[p[c]] == 0) blank = c;
         }
 
         //5 support yourself to 2 in a row when 1 in row and 2 blank
-         if (countO==1 && countX==0 && blankO > -1){
+         if (countO==1 && countX==0 && blank > -1){
 		 
-             claim(p[blankO]);
+             claim(p[blank]);
             return;
         }
 
@@ -185,16 +183,16 @@ function response(){
         p = pos[w];
         var countX =0;
         var countO =0;
-        var blankO = -1;
+        var blank = -1;
         for (var c = 0; c < 3; c++){
             if (g[p[c]] == 1) countX++;
             if (g[p[c]] == 2) countO++;
-            if (g[p[c]] == 0) blankO = c;
+            if (g[p[c]] == 0) blank = c;
         }
 
         //6 avert user 2 in row when 1 in row and blank
-     if (countX==1 && blankO > -1){
-            claim(p[blankO]);
+     if (countX==1 && blank > -1){
+            claim(p[blank]);
             return;
         }
     }
