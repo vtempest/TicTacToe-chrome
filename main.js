@@ -3,8 +3,8 @@ var g;
 //winning positions
 var pos = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[6,4,2]];
 //score
-var countLost = 0;
-var countTies = 0;
+var countLost ;
+var countTies ;
 //onload
 document.addEventListener('DOMContentLoaded', function(){
     initBoard();
@@ -13,6 +13,27 @@ document.addEventListener('DOMContentLoaded', function(){
 //create board
 function initBoard(){
 
+	//restore from storage
+	chrome.storage.local.get('ticLost', function(e){
+		countLost = e.ticLost;
+		if (countLost==null){
+			chrome.storage.local.set({'ticLost': 0}, function(e){});
+			countLost=0;
+		}
+		document.getElementById('score-o').innerText = countLost;
+	});
+	
+	chrome.storage.local.get('ticTies', function(e){
+		countTies = e.ticTies;
+		if (countTies==null){
+			chrome.storage.local.set({'ticTies': 0}, function(e){});
+			countTies=0;
+		}
+		document.getElementById('score-g').innerText = countTies;
+	});
+
+
+	
     g = [0,0,0,0,0,0,0,0,0];
 
     for (var i = 0; i < 9; i++){
@@ -231,6 +252,10 @@ function resetBoard(){
 	document.getElementById('score-o').innerText = countLost;
 	document.getElementById('score-g').innerText = countTies;
 	
+	//save storage
+	chrome.storage.local.set({'ticLost': countLost}, function(e){});
+	chrome.storage.local.set({'ticTies': countTies}, function(e){});
+			
     setTimeout(function(){
         for (var i = 0; i < 9; i++)
             document.getElementById("t" + i).className = "";
