@@ -45,16 +45,13 @@ body {
 .o{
     background-image: url(o.png);
 }
-
 .win{
-    background-color: red !important;
+    background-color: red;
 }
-
 #title{
     font-size: 16pt;
     font-weight: bold;
 }
-
-#score-x,#score-o,#score-g{
+#score-o,#score-g{
     display: inline-block;
 }
