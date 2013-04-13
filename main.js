@@ -178,11 +178,7 @@ function response(){
 			
         }
     }
-	
-	
-	
 
-	
     for (var w=0; w<pos.length;w++){
         p = pos[w];
         var countX =0;
