@@ -34,7 +34,7 @@ function initBoard(){
 			document.getElementById('score-g').innerText = countTies;
 		});
 	}
-	} catch(r){};
+	} catch(r){}
 
 
 	
@@ -66,13 +66,11 @@ function clickTic(e){
 
     g[i] = 1;
 
-    if (checkWin()==1){
-        return;
-    }else{
+    if (checkWin()!=1){
         response();
         checkWin();
     }
-};
+}
 
 //computer intelligence figures best response
 function response(){
@@ -81,7 +79,6 @@ function response(){
     function claim(o){
         g[o] = 2;
         document.getElementById("t"+o).className+="o";
-        return;
     }
 
     for (var w=0; w<pos.length;w++){
@@ -142,9 +139,8 @@ function response(){
 	    claim(6);
         return;
     }
-	
-	
-	 for (var w=0; w<pos.length;w++){
+
+	for (var w=0; w<pos.length;w++){
         p = pos[w];
         var countX =0;
         var countO =0;
@@ -157,8 +153,6 @@ function response(){
 
         //4 avert user 2 in row when 1 in row and 2 blank by placing O in a corner
 		if (countX==1 && countO==0 && blank > -1){
-            
-			
 			if (p[blank]==0 && g[0] == 0){
 				claim(0);
 				return;
@@ -175,7 +169,6 @@ function response(){
 				claim(8);
 				return;
 			}
-			
         }
     }
 
@@ -192,13 +185,10 @@ function response(){
 
         //5 support yourself to 2 in a row when 1 in row and 2 blank
          if (countO==1 && countX==0 && blank > -1){
-		 
-             claim(p[blank]);
+            claim(p[blank]);
             return;
         }
-
     }
-
 
     for (var w=0; w<pos.length;w++){
         p = pos[w];
@@ -258,7 +248,7 @@ function resetBoard(){
 		chrome.storage.local.set({'ticLost': countLost}, function(e){});
 		chrome.storage.local.set({'ticTies': countTies}, function(e){});
 	}
-	} catch(r){};
+	} catch(r){}
 	
     setTimeout(function(){
         for (var i = 0; i < 9; i++)
